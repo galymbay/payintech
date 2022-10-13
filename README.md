@@ -11,10 +11,13 @@ Test task from PayInTech
 
 
 #API
-***There is also a swagger.yaml inside the project***
-###Registration
 
-####URL: [localhost:8080/registration, POST]
+***There is also a swagger.yaml inside the project***
+
+
+#Registration
+
+#URL: [localhost:8080/registration, POST]
 
 Request example:
 
@@ -31,9 +34,9 @@ Response:
 
     Token
 
-###Login
+#Login
 
-####URL: [localhost:8080/login, POST]
+#URL: [localhost:8080/login, POST]
 
 Request example:
 
@@ -45,9 +48,10 @@ Response:
 
     Token
 
-###Loan
 
-####URL: [localhost:8080/loan, POST]
+#Loan
+
+#URL: [localhost:8080/loan, POST]
 
 Header:
 
@@ -68,7 +72,7 @@ Response:
         "interestRate": int
     }
 
-####URL: [localhost:8080/loan/{client_id}, GET]
+#URL: [localhost:8080/loan/{client_id}, GET]
 
 Header:
 
@@ -93,7 +97,7 @@ Response:
         }
     ]
 
-##Database initial queries
+#Database initial queries
 
     INSERT INTO role (role_name) VALUES ('ROLE_CLIENT');
     INSERT INTO role (role_name) VALUES ('ROLE_ADMIN');
