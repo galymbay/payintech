@@ -21,7 +21,6 @@ public class RemainingLoan {
         this.remains = remainingMonthCount * currentLoan.getMonthlyPay();
         this.remainingPaymentsCount = remainingMonthCount;
         this.nextPaymentAmount = currentLoan.getMonthlyPay();
-        // TODO: fix nextPaymentDate
         this.nextPaymentDate = localDate;
         this.earlyPayment = 120000;
     }

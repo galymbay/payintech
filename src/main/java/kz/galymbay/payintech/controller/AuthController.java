@@ -1,21 +1,25 @@
 package kz.galymbay.payintech.controller;
 
+import kz.galymbay.payintech.entity.AuthenticationDto;
 import kz.galymbay.payintech.entity.Client;
 import kz.galymbay.payintech.service.ClientService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(path = "/registration")
 @RequiredArgsConstructor
-public class RegistrationController {
+public class AuthController {
     private final ClientService clientService;
 
-    @PostMapping
-    public Client registration(@RequestBody Client client) {
+    @PostMapping(path = "/registration")
+    public String registration(@RequestBody Client client) {
         return clientService.registration(client);
+    }
+
+    @PostMapping(path = "/login")
+    public String login(@RequestBody AuthenticationDto authenticationDto) {
+        return clientService.login(authenticationDto);
     }
 }

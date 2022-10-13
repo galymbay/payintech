@@ -1,0 +1,23 @@
+version: '3'
+services:
+  db:
+    image: mysql
+    container_name: mysql
+    ports:
+      - 3306:3306
+    volumes:
+      - ./mysql_data:/my/own/datadir
+    environment:
+      MYSQL_ROOT_PASSWORD: ramazan
+      MYSQL_DATABASE: coursesite
+    restart: always
+  app:
+    build: .
+    container_name: payintech
+    ports:
+      - 8080:8080
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/coursesite
+    restart: always
+    links:
+      - db

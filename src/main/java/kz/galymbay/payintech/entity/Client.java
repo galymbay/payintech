@@ -1,7 +1,7 @@
 package kz.galymbay.payintech.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.*;
+import lombok.Data;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -9,10 +9,10 @@ import java.util.Set;
 
 @Data
 @Entity
-@NoArgsConstructor
 @Table(name = "client")
 public class Client {
     @Id
+    @JsonIgnore
     @Column(name = "client_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -38,23 +38,14 @@ public class Client {
     @Column(name = "client_address", nullable = false)
     private String address;
 
+    @JsonIgnore
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "role_user",
-            joinColumns = @JoinColumn(name = "role_id"),
-            inverseJoinColumns = @JoinColumn(name = "user_id"))
+            joinColumns = @JoinColumn(name = "client_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles = new HashSet<>();
 
     @JsonIgnore
     @OneToMany(mappedBy = "client")
     private Set<Loan> loans = new HashSet<>();
-
-    public Client(String firstName, String lastName, String patronymic, String iin, String phoneNumber, String password, String address) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.patronymic = patronymic;
-        this.iin = iin;
-        this.phoneNumber = phoneNumber;
-        this.password = password;
-        this.address = address;
-    }
 }

@@ -1,7 +1,6 @@
 package kz.galymbay.payintech.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -17,6 +16,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 public class Loan {
     @Id
+    @JsonIgnore
     @Column(name = "loan_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -24,27 +24,23 @@ public class Loan {
     @Column(name = "loan_sum")
     private int loanSum;
 
+    @Column(name = "period")
     private int period;
 
+    @Column(name = "interest_rate")
     private int interestRate;
 
     @JsonIgnore
+    @Column(name = "monthly_pay")
     private double monthlyPay;
 
     @JsonIgnore
+    @Column(name = "start_date")
     private LocalDate startDate;
 
     @JsonIgnore
+    @Column(name = "end_date")
     private LocalDate endDate;
-
-    public Loan(int loanSum, int period, int interestRate) {
-        this.loanSum = loanSum;
-        this.period = period;
-        this.interestRate = interestRate;
-        this.startDate = LocalDate.now();
-        this.endDate = startDate.plusMonths(period);
-        this.monthlyPay = (loanSum * interestRate) / period;
-    }
 
     @ManyToOne
     @JsonIgnore

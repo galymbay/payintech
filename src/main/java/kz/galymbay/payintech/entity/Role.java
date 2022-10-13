@@ -19,11 +19,12 @@ import java.util.Set;
 public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "role_id")
     private Long id;
     @Column(name = "role_name", nullable = false, unique = true)
     private String roleName;
 
     @JsonIgnore
     @ManyToMany(mappedBy = "roles")
-    private Set<Client> users = new HashSet<>();
+    private Set<Client> clients = new HashSet<>();
 }

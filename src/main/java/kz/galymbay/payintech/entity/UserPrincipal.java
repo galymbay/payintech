@@ -10,10 +10,10 @@ import java.util.Collection;
 import java.util.List;
 
 @Getter
-public class MyUserPrincipal implements UserDetails {
+public class UserPrincipal implements UserDetails {
     private Client client;
 
-    public MyUserPrincipal(Client user) {
+    public UserPrincipal(Client user) {
         this.client = user;
     }
 
