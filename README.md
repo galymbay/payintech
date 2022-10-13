@@ -2,6 +2,7 @@
 Test task from PayInTech
 
 ##Launch Application
+
     git clone https://github.com/galymbay/payintech.git
     docker pull postgres
     docker run -d -p 5432:5432 -e POSTGRES_PASSWORD=postgres postgres
